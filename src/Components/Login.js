@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import '../Login.css'
 import { Link } from 'react-router-dom';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AppNavbar from '../AppNavbar';
-import { Button, Container } from 'reactstrap';
+// import usernameIcon from "../assests/akar-icons_person.svg";
 
 function Login() {
     const [errorMessages, setErrorMessages] = useState({});
@@ -29,6 +27,7 @@ function Login() {
     const renderErrorMessage = (name) => name === errorMessages.name && (<div className="error">{errorMessages.message}</div>);
 
     const handleSubmit = (event) => {
+        debugger
         // Prevent page reload
         event.preventDefault();
         var { uname, pass } = document.forms[0];
@@ -50,8 +49,18 @@ function Login() {
         }
     };
 
-    return (
+    const toggle = () => {
+        debugger
+        var temp = document.getElementById("password");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    };
 
+    return (
         <>
             {
                 isSubmitted ?
@@ -63,21 +72,25 @@ function Login() {
                     <div className="form">
                         {/* < AppNavbar /> */}
                         <div className="login-form login">
-                            <div className="title">Sign In</div>
+                            <div className="title">Login</div>
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container">
                                     <label>Username </label>
-                                    <input type="text" name="uname" required />
+                                    <input id='name' type="text" name="uname" required />
                                     {renderErrorMessage("uname")}
                                 </div>
                                 <div className="input-container">
                                     <label>Password </label>
-                                    <input type="password" name="pass" required />
+                                    <input id='password' type="password" name="pass" required />
                                     {renderErrorMessage("pass")}
                                 </div>
-                                <div className="button-container">
-                                    <input type="submit" />
+                                <p style={{ marginLeft: '2%' }}>Click on the checkbox to show
+                                    or hide password: </p>
+                                <input style={{ marginLeft: '2%' }} type="checkbox" onClick={toggle} />Show Password
+                                <div class="button-container">
+                                    <button type="submit" className="submitBtn">Login</button>
                                 </div>
+                                <p style={{ marginLeft: '5%' }}>don't have an account ? <Link to='/signup'>Sign Up</Link></p>
                             </form>
                         </div>
                     </div>
