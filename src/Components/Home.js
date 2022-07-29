@@ -3,13 +3,15 @@ import '../App.css';
 import AppNavbar from '../AppNavbar';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
+import ItemsList from './ItemsList';
 
 const Home = () => {
   return (
-    <div>
-      <AppNavbar/>
+    <div>     
+      <AppNavbar />
       <Container fluid>
-        <Button color="link"><Link to="/items"><h5>Click Here to View all Items in Cart</h5></Link></Button>
+        <h4 style={{color:'blue'}}>Welcome to Signant,Please find Below Items In Your Cart</h4>
+        <ItemsList/>
       </Container>
     </div>
   );

@@ -44,7 +44,7 @@ const EditItem = () => {
       body: JSON.stringify(item)
     });
     setItem(initialFormState);
-    navigate('/items');
+    navigate('/home');
   }
 
   const title = <h2>{item.id ? 'Edit Group' : 'Add Group'}</h2>;
@@ -81,7 +81,7 @@ const EditItem = () => {
         </FormGroup>
         <FormGroup>
           <Button color="primary" type="submit">Save</Button>{' '}
-          <Button color="secondary" tag={Link} to="/items">Cancel</Button>
+          <Button color="secondary" tag={Link} to="/home">Cancel</Button>
         </FormGroup>
       </Form>
     </Container>

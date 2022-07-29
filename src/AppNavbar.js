@@ -8,10 +8,15 @@ const AppNavbar = () => {
 
   return (
     <Navbar color="dark" dark expand="md">
-      <NavbarBrand tag={Link} to="/">Signant Cart</NavbarBrand>
-      <NavbarToggler onClick={() => { setIsOpen(!isOpen) }}/>
+      <NavbarBrand tag={Link} to="/home">Signant Cart</NavbarBrand>
+      <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+      <Nav className="justify-content-end" style={{marginLeft:'75%'}}  navbar>
+        <NavItem>
+          <NavLink href="/signup">SignUp</NavLink>
+        </NavItem>
+      </Nav>
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="justify-content-end" style={{width: "100%"}} navbar>
+        <Nav className="justify-content-end" navbar>
           <NavItem>
             <NavLink href="https://github.com/Ramesha-Gowda">GitHub</NavLink>
           </NavItem>

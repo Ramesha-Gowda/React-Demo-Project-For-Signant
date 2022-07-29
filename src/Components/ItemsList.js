@@ -81,7 +81,6 @@ const ItemsList = () => {
 
   return (
     <div>
-      <AppNavbar />
       <Container fluid>
         <div className="float-end">
           <Button color="success" tag={Link} to="/items/new">Add New Item</Button>
