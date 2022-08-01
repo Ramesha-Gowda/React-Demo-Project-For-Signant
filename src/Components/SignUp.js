@@ -13,27 +13,29 @@ function SignUp() {
     };
     const [user, setUser] = useState(initialFormState);
     const handleInputChange = (e) => {
-        const { name, value } = e.target
+        debugger
+        const { id, value } = e.target
 
-        setUser({ ...user, [name]: value })
+        setUser({ ...user, [id]: value });
     };
     const handleSubmit = async () => {
-        debugger
-        await axios.post('/users', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-        // axios.post('/api/users', user)
-        //     .then(res => {
-        //         debugger
-        //         setIsSuccessFul(true);
-        //     })
+        axios.post('/users', user)
+            .then(res => {
+                debugger
+                setIsSuccessFul(true);
+            })
         setIsSuccessFul(true);
 
+    };
+    const toggle = () => {
+        debugger
+        var temp = document.getElementById("password");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
     };
     return (
         <>
@@ -58,6 +60,10 @@ function SignUp() {
                             <div className="password">
                                 <label className="form__label" for="password">Password </label>
                                 <input onChange={(e) => handleInputChange(e)} className="form__input" type="password" id="password" placeholder="Password" />
+                            </div>
+                            <div className='showpassword'>
+                                <label className="form__label" for="showpassword"> </label>
+                                <input type="checkbox" onClick={toggle} />Show Password
                             </div>
                         </div>
                         <div class="button-container">
