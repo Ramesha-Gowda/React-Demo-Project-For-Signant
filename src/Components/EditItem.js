@@ -47,7 +47,7 @@ const EditItem = () => {
     navigate('/home');
   }
 
-  const title = <h2>{item.id ? 'Edit Group' : 'Add Group'}</h2>;
+  const title = <h2>{item.id ? 'Edit Item' : 'Add Item'}</h2>;
 
   return (<div>
     <AppNavbar />
