@@ -94,7 +94,6 @@ const ItemsList = () => {
             label="Search By Name"
           />
         </div>
-        <h3>Items List</h3>
         <Table className="mt-4" striped border="1">
           <thead>
             <tr>

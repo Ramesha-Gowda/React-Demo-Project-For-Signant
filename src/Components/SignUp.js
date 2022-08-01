@@ -1,30 +1,37 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import '../SignUp.css'
 import Login from './Login';
 
 function SignUp() {
-    const [id, setId] = useState(0);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [isSuccessFul, setIsSuccessFul] = useState(false);
-    const handleInputChange = (e) => {
-        const { id, value } = e.target;
-        if (id === "id") {
-            setId(value);
-        }
-        if (id === "name") {
-            setName(value);
-        }
-        if (id === "email") {
-            setEmail(value);
-        }
-        if (id === "password") {
-            setPassword(value);
-        }
+    const initialFormState = {
+        id: 0,
+        name: '',
+        email: '',
+        password: ''
     };
-    const handleSubmit = () => {
-        console.log(id, name, email, password);
+    const [user, setUser] = useState(initialFormState);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target
+
+        setUser({ ...user, [name]: value })
+    };
+    const handleSubmit = async () => {
+        debugger
+        await axios.post('/users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+        // axios.post('/api/users', user)
+        //     .then(res => {
+        //         debugger
+        //         setIsSuccessFul(true);
+        //     })
         setIsSuccessFul(true);
 
     };
